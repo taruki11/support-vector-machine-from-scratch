@@ -30,10 +30,12 @@ def initialize_parameters(n_features):
 
 # Step 3 - compute_scores
 import numpy as np
+def compute_scores(x, params):
+    x = np.asarray(x, dtype=float)
+    w = np.asarray(params["w"], dtype=float)
+    b = float(params["b"])
 
-def compute_scores_torch(x, params):
-    x = torch.as_tensor(x, dtype=params["w"].dtype)
-    return x @ params["w"] + params["b"]
+    return x @ w + b
 
 # Step 4 - predict_from_scores (not yet solved)
 # TODO: implement
