@@ -90,8 +90,15 @@ def compute_gradients(x, y, params, reg_lambda):
         "db": db,
     }
 
-# Step 8 - apply_update (not yet solved)
-# TODO: implement
+# Step 8 - apply_update
+def apply_update(params, grads, learning_rate):
+    w = np.asarray(params["w"], dtype=float)
+    dw = np.asarray(grads["dw"], dtype=float)
+
+    return {
+        "w": w - learning_rate * dw,
+        "b": float(params["b"] - learning_rate * grads["db"]),
+    }
 
 # Step 9 - train_svm (not yet solved)
 # TODO: implement
