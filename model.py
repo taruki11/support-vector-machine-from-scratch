@@ -113,8 +113,13 @@ def train_svm(x, y, learning_rate, reg_lambda, n_epochs):
 
     return params
 
-# Step 10 - predict_labels (not yet solved)
-# TODO: implement
+# Step 10 - predict_labels
+import numpy as np
+
+# 10. 预测一批样本的标签
+def predict_labels(x, params):
+    scores = compute_scores(x, params)
+    return predict_from_scores(scores).astype(int)
 
 # Step 11 - accuracy_score (not yet solved)
 # TODO: implement
