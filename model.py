@@ -22,10 +22,10 @@ def standardize_features(x):
 # Step 2 - initialize_parameters
 import numpy as np
 
-def initialize_parameters_torch(n_features):
+def initialize_parameters(n_features):
     return {
-        "w": torch.zeros(n_features, dtype=torch.float64),
-        "b": torch.tensor(0.0, dtype=torch.float64),
+        "w": np.zeros(n_features, dtype=float),
+        "b": 0.0,
     }
 
 # Step 3 - compute_scores
