@@ -37,8 +37,12 @@ def compute_scores(x, params):
 
     return x @ w + b
 
-# Step 4 - predict_from_scores (not yet solved)
-# TODO: implement
+# Step 4 - predict_from_scores
+import numpy as np
+
+def predict_from_scores(scores):
+    scores = np.asarray(scores, dtype=float)
+    return np.where(scores >= 0, 1, -1)
 
 # Step 5 - hinge_loss_example
 def hinge_loss_example(score, y):
