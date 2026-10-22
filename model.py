@@ -40,8 +40,9 @@ def compute_scores(x, params):
 # Step 4 - predict_from_scores (not yet solved)
 # TODO: implement
 
-# Step 5 - hinge_loss_example (not yet solved)
-# TODO: implement
+# Step 5 - hinge_loss_example
+def hinge_loss_example(score, y):
+    return float(max(0.0, 1.0 - y * score))
 
 # Step 6 - svm_objective (not yet solved)
 # TODO: implement
