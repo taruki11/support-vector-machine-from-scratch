@@ -60,8 +60,35 @@ def svm_objective(x, y, params, reg_lambda):
     regularization = reg_lambda * np.dot(w, w)
     return float(np.mean(losses) + regularization)
 
-# Step 7 - compute_gradients (not yet solved)
-# TODO: implement
+# Step 7 - compute_gradients
+import numpy as np
+
+def compute_gradients(x, y, params, reg_lambda):
+    x = np.asarray(x, dtype=float)
+    y = np.asarray(y, dtype=float)
+    w = np.asarray(params["w"], dtype=float)
+
+    n_samples = len(y)
+    scores = compute_scores(x, params)
+    margins = y * scores
+
+    # 只有 margin < 1 的样本对合页损失梯度有贡献
+    active = margins < 1.0
+
+    # 正则项 reg_lambda * ||w||^2 的梯度是 2 * reg_lambda * w
+    dw = 2.0 * reg_lambda * w
+
+    # 合页损失部分：对所有有效样本求平均
+    if np.any(active):
+        dw -= (x[active].T @ y[active]) / n_samples
+        db = float(-np.sum(y[active]) / n_samples)
+    else:
+        db = 0.0
+
+    return {
+        "dw": dw,
+        "db": db,
+    }
 
 # Step 8 - apply_update (not yet solved)
 # TODO: implement
